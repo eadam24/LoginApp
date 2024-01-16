@@ -1,0 +1,63 @@
+﻿<Window x:Class="LoginApp.SignUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginApp"
+        mc:Ignorable="d"
+        Title="SignUp" Height="300" Width="300" Background="AliceBlue">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+
+
+       </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="1" Grid.Column="1" 
+                   Text="Sign Up" FontWeight="Bold" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   FontSize="20"/>
+
+        <TextBox x:Name="username" Grid.Row="2" Grid.Column="1" Width="150" Height="20" 
+                 HorizontalAlignment="Center" VerticalAlignment="Center"
+                 TextAlignment="Left" Text="Username" BorderBrush="#FF1552FF" Background="#FFBCCCEF" Foreground="Black" GotFocus="usernameClear" />
+        
+        <TextBox x:Name="firstname" Grid.Row="3" Grid.Column="1" Width="150" Height="20" 
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           TextAlignment="Left" Text="First name" BorderBrush="#FF1552FF" Background="#FFBCCCEF" Foreground="Black" GotFocus="firstnameClear"/>
+        
+        <TextBox x:Name="lastname" Grid.Row="4" Grid.Column="1" Width="150" Height="20" 
+           HorizontalAlignment="Center" VerticalAlignment="Center"
+           TextAlignment="Left" Text="Last Name" BorderBrush="#FF1552FF" Background="#FFBCCCEF" Foreground="Black" GotFocus="lastnameClear"/>
+
+        <TextBox x:Name="user_email" Grid.Row="5" Grid.Column="1" Width="150" Height="20" 
+                         HorizontalAlignment="Center" VerticalAlignment="Center"
+                    TextAlignment="Left" Text="Email" BorderBrush="#FF1552FF" Background="#FFBCCCEF" Foreground="Black" GotFocus="emailClear"/>
+
+        <PasswordBox x:Name="user_pass" Grid.Row="6" Grid.Column="1" 
+                     Width="150" Height="20" 
+                     HorizontalAlignment="Center" VerticalAlignment="Center" 
+                     BorderBrush="#FF1552FF" Background="#FFBCCCEF" Foreground="Black"/>
+
+        <Button x:Name="submit_button" Grid.Row="7" Grid.Column="1"
+                VerticalAlignment="Center" HorizontalAlignment="Center"
+                Width="80" Height="20" Content="Submit" Click="submit_button_Click" BorderBrush="Black" 
+                Background="#FF6B91FC" Foreground="Black"/>
+
+
+    </Grid>
+</Window>
