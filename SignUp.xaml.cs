@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,25 +22,54 @@ namespace LoginApp
     /// </summary>
     public partial class SignUp : Window
     {
+        string sqlConnection = @"Data Source=LAB108PC04\SQLEXPRESS; Initial Catalog=loginDB_eric; Integrated Security=True";
+
         public SignUp()
         {
             InitializeComponent();
         }
-
+       
         private void submit_button_Click(object sender, RoutedEventArgs e)
         {
 
-            if(CheckUsername() && CheckNames() && CheckEmail() && CheckPassword())
+            try
             {
-                MessageBox.Show($"Created Account for {firstname.Text} {lastname.Text} \n Username: {username.Text}  Password: {user_pass.Password} \n Email: {user_email.Text}");
+
+
+                if (CheckUsername() && CheckNames() && CheckEmail() && CheckPassword())
+                {
+
+                    SqlConnection conn = new SqlConnection(sqlConnection);
+                    conn.Open();
+                    string query = $"Insert into SignCred(Username, FirstName, LastName, Email, Password) values " +
+                        $"('{username.Text}', '{firstname.Text}', '{lastname.Text}', '{user_email.Text}', '{user_pass.Password}')";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.ExecuteNonQuery();
+
+
+                    MessageBox.Show($"Created Account for {firstname.Text} {lastname.Text} \n Username: {username.Text}  Password: {user_pass.Password} \n Email: {user_email.Text}");
+                }
+                else
+                {
+                    MessageBox.Show("Not succesfull");
+                }
+
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private bool CheckUsername()
         {
             if(username.Text == string.Empty)
             {
-                MessageBox.Show("Empty Username", "Incorrect Username!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Username Not Complete", "Incorrect Username!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -47,9 +77,9 @@ namespace LoginApp
 
         private bool CheckEmail()
         {
-            if(user_email.Text == string.Empty)
+            if(user_email.Text == string.Empty || !user_email.Text.Contains("@"))
             {
-                MessageBox.Show("Empty Email", "Incorrect Email!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Email Not Complete", "Incorrect Email!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -117,6 +147,18 @@ namespace LoginApp
         {
             user_email.Text = string.Empty;
 
+        }
+
+        private void open_login_button_Click(object sender, RoutedEventArgs e)
+        {
+          
+            
+
+            LoginWindow loginWindow = new LoginWindow();
+
+            loginWindow.Show();
+
+            this.Close();
         }
     }
 }

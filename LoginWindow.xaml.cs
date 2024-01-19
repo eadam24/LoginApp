@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace LoginApp
 {
@@ -23,6 +24,8 @@ namespace LoginApp
     {
         public LoginWindow()
         {
+         
+
             InitializeComponent();
         }
 
@@ -37,7 +40,7 @@ namespace LoginApp
                 if (sqlConnection.State == ConnectionState.Closed)
                     sqlConnection.Open();
 
-                string Query = $"SELECT COUNT(1) FROM UserCred WHERE Username=@Username AND Password=@Password";
+                string Query = $"SELECT COUNT(1) FROM SignCred WHERE Username=@Username AND Password=@Password";
 
                 SqlCommand cmd = new SqlCommand(Query, sqlConnection);
                 
@@ -50,9 +53,11 @@ namespace LoginApp
 
                 if (count == 1)
                 {
-                    MainWindow mw = new MainWindow();
-                    mw.Show();
-                    this.Close();
+
+                    MessageBox.Show("Succsessful Log!");
+
+                    Thread.Sleep(TimeSpan.FromSeconds(2));System.Windows.Application.Current.Shutdown();
+
                 }
                 else
                 {

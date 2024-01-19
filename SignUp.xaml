@@ -25,7 +25,7 @@
             <RowDefinition Height="*"/>
 
 
-       </Grid.RowDefinitions>
+        </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="1" Grid.Column="1" 
                    Text="Sign Up" FontWeight="Bold" 
@@ -35,11 +35,11 @@
         <TextBox x:Name="username" Grid.Row="2" Grid.Column="1" Width="150" Height="20" 
                  HorizontalAlignment="Center" VerticalAlignment="Center"
                  TextAlignment="Left" Text="Username" BorderBrush="#FF1552FF" Background="#FFBCCCEF" Foreground="Black" GotFocus="usernameClear" />
-        
+
         <TextBox x:Name="firstname" Grid.Row="3" Grid.Column="1" Width="150" Height="20" 
            HorizontalAlignment="Center" VerticalAlignment="Center"
            TextAlignment="Left" Text="First name" BorderBrush="#FF1552FF" Background="#FFBCCCEF" Foreground="Black" GotFocus="firstnameClear"/>
-        
+
         <TextBox x:Name="lastname" Grid.Row="4" Grid.Column="1" Width="150" Height="20" 
            HorizontalAlignment="Center" VerticalAlignment="Center"
            TextAlignment="Left" Text="Last Name" BorderBrush="#FF1552FF" Background="#FFBCCCEF" Foreground="Black" GotFocus="lastnameClear"/>
@@ -54,9 +54,14 @@
                      BorderBrush="#FF1552FF" Background="#FFBCCCEF" Foreground="Black"/>
 
         <Button x:Name="submit_button" Grid.Row="7" Grid.Column="1"
-                VerticalAlignment="Center" HorizontalAlignment="Center"
+                VerticalAlignment="Center" HorizontalAlignment="Left"
                 Width="80" Height="20" Content="Submit" Click="submit_button_Click" BorderBrush="Black" 
-                Background="#FF6B91FC" Foreground="Black"/>
+                Background="#FF6B91FC" Foreground="Black" Margin="30,0,0,0"/>
+
+        <Button x:Name="open_login_button" Grid.Row="7" Grid.Column="1"
+           VerticalAlignment="Center" HorizontalAlignment="Left"
+           Width="80" Height="20" Content="Log In" BorderBrush="Black" 
+           Background="#FF6B91FC" Foreground="Black" Margin="150,0,0,0" Click="open_login_button_Click"/>
 
 
     </Grid>
